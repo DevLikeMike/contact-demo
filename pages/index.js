@@ -8,7 +8,7 @@ export default function Home() {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
-    let { name, email, phone, message } = data;
+    let { name, email, message } = data;
     const res = await fetch(`api/contact`, {
       method: "POST",
       headers: {
@@ -17,7 +17,6 @@ export default function Home() {
       body: JSON.stringify({
         name: name,
         email: email,
-        phone: phone,
         message: message,
       }),
     });
@@ -43,8 +42,6 @@ export default function Home() {
           id='email'
           {...register("email", { required: true })}
         />
-        <label htmlFor='phone'>Phone: </label>
-        <input type='text' name='phone' id='phone' {...register("phone")} />
         <label htmlFor='message'>Your Message: </label>
         <textarea
           name='message'
